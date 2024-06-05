@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--view image and name-->
+<odoo>
+    <template id="partners_detail" name="Partners">
+        <t t-call="website.layout">
+            <div class="container mt-3">
+                <h2>Partner's Information</h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="partners" t-as="o">
+                            <tr>
+                                <td style="padding:1px;">
+                                    <a t-att-href="'orders_information/%s' % o.id">
+                                        <img t-att-src="image_data_uri(o.image_1920)" class="partner-image"/>
+                                    </a>
+                                </td>
+                                <td style="padding: 8px;">
+                                    <a t-att-href="'partner_information/%s' % o.id">
+                                        <t t-esc="o.name"/>
+                                    </a>
+                                </td>
+                                <td style="padding: 8px;">
+                                    <a t-att-href="'partner_information/%s' % o.id">
+                                        <t t-esc="o.email"/>
+                                    </a>
+                                </td>
+                                <td style="padding: 8px;">
+                                    <a t-att-href="'partner_information/%s' % o.id">
+                                        <t t-esc="o.phone"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+            <!--            <table class="table table-hover">-->
+            <!--                <thead>-->
+            <!--                    <div class="text-center">-->
+            <!--                        <h2>-->
+            <!--                            <strong>Partner's Information</strong>-->
+            <!--                        </h2>-->
+            <!--                    </div>-->
+            <!--                </thead>-->
+            <!--                <thead>-->
+            <!--                    <tr>-->
+            <!--                        <th>Image</th>-->
+            <!--                        <th>Name</th>-->
+            <!--                        <th>Email</th>-->
+            <!--                        <th>Phone</th>-->
+            <!--                    </tr>-->
+            <!--                </thead>-->
+            <!--                <tbody>-->
+            <!--                    <t t-foreach="partners" t-as="o">-->
+            <!--                        <tr>-->
+            <!--                            <td style="padding:1px;">-->
+            <!--                                <img t-att-src="image_data_uri(o.image_1920)" />-->
+            <!--                            </td>-->
+            <!--                            <td style="padding: 8px;">-->
+            <!--                                <t t-esc="o.name"/>-->
+            <!--                            </td>-->
+            <!--                            <td style="padding: 8px;">-->
+            <!--                                <t t-esc="o.email"/>-->
+            <!--                            </td>-->
+            <!--                            <td style="padding: 8px;">-->
+            <!--                                <t t-esc="o.phone"/>-->
+            <!--                            </td>-->
+            <!--                        </tr>-->
+            <!--                    </t>-->
+            <!--                </tbody>-->
+            <!--            </table>-->
+            <style>
+                .partner-image {
+                width: 35px;
+                height: 35px;
+                object-fit: cover;
+                border-radius: 0%;
+                margin-right: 10px;
+                }
+            </style>
+        </t>
+    </template>
+
+    <template id="partner_info_template">
+        <t t-call="web.layout">
+
+            <div class="partner-info-button">
+                <a t-att-href="'/back'">
+                    <div style="margin-inline-start: 100px;">
+                        <button type="button" class="button button1">Back</button>
+                    </div>
+                </a>
+            </div>
+
+            <div class="partner-info">
+                <div style="margin-top: 0px; padding-top: 0px;">
+                    <div class="image">
+                        <img t-att-src="'/web/image/res.partner/' + str(partner.id) + '/image_1920'"
+                             alt="Partner Image"/>
+                    </div>
+                    <div class="header">
+                        <h1 t-esc="partner.name"/>
+                    </div>
+                    <div class="content">
+                        <div class="col-left">
+                            <div class="address">
+                                <p>
+                                    <strong>Address:</strong>
+                                    <br/>
+                                    <span t-esc="partner.street"/>
+                                    <br/>
+                                    <span t-esc="partner.street2"/>
+                                    <span t-esc="partner.city"/>,
+                                    <span t-esc="partner.state_id.name"/>
+                                    <span t-esc="partner.zip"/>
+                                    <br/>
+                                    <span t-esc="partner.country_id.name"/>
+                                </p>
+                            </div>
+                            <div class="tax-id">
+                                <p>
+                                    <strong>Tax ID:</strong>
+                                    <br/>
+                                    <span t-esc="partner.vat"/>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-right">
+                            <div class="address">
+                                <br/>
+                                <br/>
+                                <div style="margin-inline-end: 210px;">
+                                    <strong>Phone:</strong>
+                                    <span t-esc="partner.phone"/>
+                                </div>
+                                <br/>
+                                <div style="margin-inline-end: 235px;">
+                                    <strong>Mobile:</strong>
+                                    <span t-esc="partner.mobile"/>
+                                </div>
+                                <br/>
+                                <div style="margin-inline-end: 100px;">
+                                    <strong>Email:</strong>
+                                    <span t-esc="partner.email"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                .partner-info-button {
+                width: 14%;
+                height: 200px;
+                float: left;
+                box-sizing: border-box;
+                }
+                .partner-info {
+                width: 70%;
+                height: 700px;
+                margin: 0 auto;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                }
+                .partner-info .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                }
+
+                .partner-info .header h1 {
+                font-size: 24px;
+                max-height: 1000px;
+                }
+
+                .partner-info .header .radio-buttons span {
+                margin-left: 10px;
+                font-weight: bold;
+                color: #4CAF50; /* green color for the selected type */
+                }
+
+                .partner-info .content {
+                display: flex;
+                justify-content: space-between;
+                }
+
+                .partner-info .col-left, .partner-info .col-right {
+                flex: 1;
+                padding: 10px;
+                }
+
+                .partner-info .col-right {
+                text-align: right;
+                }
+
+                .partner-info .address, .partner-info .tax-id, .partner-info .contact-info, .partner-info .tags {
+                margin-bottom: 20px;
+                }
+
+                .partner-info .contact-info a {
+                color: #1E88E5; /* blue color for links */
+                text-decoration: none;
+                }
+
+                .partner-info .contact-info a:hover {
+                text-decoration: underline;
+                }
+
+                .partner-info .image img {
+                max-width: 150px;
+                height: auto;
+                border-radius: 5px;
+                }
+
+                .partner-info .tags .badge {
+                background-color: #4CAF50;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 3px;
+                margin-right: 5px;
+                }
+                .button {
+                background-color: #04AA6D;
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 2px 2px;
+                cursor: pointer;
+                }
+                .button1 {
+                padding: 10px 24px;
+                border-radius: 4px;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                }
+
+            </style>
+        </t>
+    </template>
+    <record id="website_menu_create" model="website.menu">
+        <field name="name">Partners</field>
+        <field name="url">/partners</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">80</field>
+    </record>
+</odoo>
+
+

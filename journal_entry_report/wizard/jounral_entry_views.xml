@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	'''Journal entries wizard form view and menu'''
+	<record id="journal_wiz_form_view" model="ir.ui.view">
+		<field name="name">journal.wiz.form.view</field>
+		<field name="model">journal.report.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Journal Wizard">
+				<group>
+					<field name="start_date"/>
+					<field name="end_date"/>
+					<field name="company_ids" widget='many2many_tags'/>
+				</group>
+				<footer>
+					<button string="Print Report" type="object" name="action_print_report" class="btn-primary"/>
+					<button string="Cancel" class="btn-primary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="journal_report_wizard_action" model="ir.actions.act_window">
+        <field name="name"> Create Journal Entry Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">journal.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <menuitem id="journal_wizard_menu"
+              name="Journal Entry Report"
+              parent="account_reports.menu_action_account_report_ja"
+              action="journal_report_wizard_action"
+              sequence="100"/>
+</odoo>

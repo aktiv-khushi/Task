@@ -1,0 +1,53 @@
+<odoo>
+    '''bulk product model form view and menu'''
+    <record id="view_bulk_product_form" model="ir.ui.view">
+        <field name="name">bulk.product.form</field>
+        <field name="model">bulk.product</field>
+        <field name="arch" type="xml">
+            <form string="Bulk Product">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="master_product"/>
+                        <field name="user_id"/>
+                        <field name="email"/>
+                    </group>
+                    <notebook>
+                        <page string="Bulk Products">
+                            <field name="bulk_products">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_bulk_product_tree" model="ir.ui.view">
+        <field name="name">bulk.product.tree</field>
+        <field name="model">bulk.product</field>
+        <field name="arch" type="xml">
+            <tree string="Bulk Products">
+                <field name="name"/>
+                <field name="master_product"/>
+                <field name="user_id"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_bulk_product" model="ir.actions.act_window">
+        <field name="name">Bulk Products</field>
+        <field name="res_model">bulk.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_bulk_product_tree"/>
+    </record>
+
+    <menuitem id="menu_bulk_product"
+              name="Bulk Products"
+              parent="sale.sale_order_menu"
+              action="action_bulk_product"/>
+</odoo>

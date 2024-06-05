@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    '''Add a button named Show History in the Sale Order Line.'''
+    <record id="sale_order_line_inherit" model="ir.ui.view">
+        <field name="name">sale.order.line.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='name']" position="after">
+                <button name="%(sale_order_wizard_action_window)d" type="action" string="Show history" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

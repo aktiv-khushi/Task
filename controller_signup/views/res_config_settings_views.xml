@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    '''res.config.settings add boolean field.'''-->
+    <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='emails']" position="inside">
+                <setting id="signup_process" string="Signup process"  help="onboarding of a newly signed-up user">
+                    <field name="signup_process" field_id="process_01"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

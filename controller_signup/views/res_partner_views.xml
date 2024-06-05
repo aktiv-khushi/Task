@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This record defines a view inheritance for the 'res.partner' model. -->
+<!--    It extends the base partner form view by adding custom fields.-->
+<odoo>
+    <record model="ir.ui.view" id="res_partner_inherit_view">
+        <field name="name">res.partner.inherit.view</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="dob"/>
+                <field name="pob"/>
+                <field name="gender"/>
+                <field name="passport"/>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="license"/>
+                <field name="language"/>
+                <field name="status"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

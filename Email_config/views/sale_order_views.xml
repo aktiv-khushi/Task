@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--    sale order view inherit and one method with two button add a button is identified from the context.-->
+    <record id="view_sale_order_forms" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="action_view_sales_orders" type="object" string="Quotation"
+                        class="oe_stat_button" context="{'email_type': 'quotation'}"/>
+                <button name="action_view_sales_orders" type="object" string="Sale order"
+                        class="oe_stat_button" context="{'email_type': 'sale_order'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

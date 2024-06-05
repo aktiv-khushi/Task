@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--  If user user are available so order history template here.-->
+    <template id="orders_page_template" name="Orders">
+        <t t-call="website.layout">
+            <div class="container mt-3">
+                <h2>Order's Information</h2>
+                <table class="table table-hover">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Order number</th>
+                            <th>Order date</th>
+                            <th>Total amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="orders" t-as="o">
+                            <tr>
+                                <td style="padding: 8px;">
+                                    <a t-att-href="'orders_information/%s' % o.id">
+                                        <t t-esc="o.name"/>
+                                    </a>
+                                </td>
+                                <td style="padding: 8px;">
+                                    <a t-att-href="'orders_information/%s' % o.id">
+                                        <t t-esc="o.date_order"/>
+                                    </a>
+                                </td>
+                                <td style="padding: 8px;">
+                                    <a t-att-href="'orders_information/%s' % o.id">
+                                        <t t-esc="o.amount_total"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+<!-- If user are not available so sign page redirect.-->
+    <template id="signin_prompt_template" name="Orders Page">
+        <center><h2>Please sign in to see your orders!</h2>
+            <a href="/web/login">
+                <button type="button" class="btn btn-outline-primary" style="width: 10%;height:50px;">Sign in</button>
+            </a>
+        </center>
+    </template>
+
+    <!--create a menu.-->
+    <record id="website_menu_create" model="website.menu">
+        <field name="name">Orders</field>
+        <field name="url">/orders</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">80</field>
+    </record>
+</odoo>

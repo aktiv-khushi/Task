@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--     This template renders a form for collecting detailed user information. -->
+<odoo>
+    <template id="user_detailed_form" name="User detail Form">
+        <t t-call="website.layout">
+            <div class="container mt16 mb16">
+                <div class="jumbotron text-center">
+                    <b>
+                        <h1>User Detail Form!</h1>
+                    </b>
+                </div>
+            </div>
+            <div id="wrap">
+                <div class="oe_structure">
+                    <form role="form" action="/create_partner" method="POST">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="container row">
+                            <div id="stree1" style="margin: 10px;">
+                                <label for="street1">street 1</label>
+                                <input type="street1" name="street1" t-att-value="street1" id="street1"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="stree2" style="margin: 10px;">
+                                <label for="street2">street 2</label>
+                                <input type="street2" name="street2" t-att-value="street2" id="street2"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="city" style="margin: 10px;">
+                                <label for="city">City</label>
+                                <input type="city" name="city" t-att-value="city" id="city"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="country" style="margin: 10px;">
+                                <label for="country">Country</label>
+                                <select name="country" id="Country" class="form-control">
+                                    <option value=""/>
+                                    <t t-foreach="countries" t-as="c">
+                                        <option t-att-value="c.id">
+                                            <t t-esc="c.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div id="state" style="margin: 10px;">
+                                <label for="state">State</label>
+                                <select name="state" id="state" class="form-control">
+                                    <option value=""/>
+                                    <t t-foreach="states" t-as="s">
+                                        <option t-att-value="s.id">
+                                            <t t-esc="s.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div id="zip" style="margin: 10px;">
+                                <label for="text">zip</label>
+                                <input type="text" name="zip" t-att-value="zip" id="text"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="dob" style="margin: 10px;">
+                                <label for="birth">Date Of Birth</label>
+                                <input type="date" name="birth" t-att-value="birth" id="birth"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="pob" style="margin: 10px;">
+                                <label for="pob">Place Of Birth</label>
+                                <input type="text" name="pob" t-att-value="pob" id="pob"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="gender" style="margin: 10px;">
+                                <label for="gender">gender</label>
+                                <select name="gender" id="gender" class="form-select form-select-sm"
+                                        aria-label=".form-select-sm example">
+                                    <option value="">Select your gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div id="mobile" style="margin: 10px;">
+                                <label for="no">Mobile Number</label>
+                                <input type="no" name="no" t-att-value="no" id="no"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="passport" style="margin: 10px;">
+                                <label for="passport">passport</label>
+                                <input type="passport" name="passport" t-att-value="passport" id="passport"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="license" style="margin: 10px;">
+                                <label for="license">Driving license</label>
+                                <input type="license" name="license" t-att-value="license" id="license"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <div id="status" style="margin: 10px;">
+                                <label for="status">Marital Status</label>
+                                <select name="status" id="status" class="form-select form-select-sm"
+                                        aria-label=".form-select-sm example">
+                                    <option value="">Select your gender</option>
+                                    <option value="single">Single</option>
+                                    <option value="married">Married</option>
+                                </select>
+                            </div>
+                            <div id="job" style="margin: 10px;">
+                                <label for="job">Job Position</label>
+                                <input type="job" name="job" t-att-value="job" id="job"
+                                       class="form-control" required="required"/>
+                            </div>
+                            <br/>
+                            <div class="clearfix oe_login_buttons">
+                                <a href="/msg">
+                                    <center>
+                                        <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                                    </center>
+                                </a>
+                            </div>
+                            <br/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--    This template renders a message to thank the user for completing the onboarding process.-->
+
+    <template id="msg_template" name="Thank Youuuu">
+        <t t-call="website.layout">
+            <p>
+                <h2>
+                    <center>
+                        <b>successful completion of the onboarding process.</b>
+                    </center>
+                </h2>
+            </p>
+            <div class="clearfix oe_login_buttons">
+                <a href="/success">
+                    <center>
+                        <button type="success" class="btn btn-primary pull-left">Success</button>
+                    </center>
+                </a>
+            </div>
+        </t>
+    </template>
+</odoo>

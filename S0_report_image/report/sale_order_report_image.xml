@@ -1,0 +1,15 @@
+<odoo>
+    '''Inherit sale report and add product images'''
+
+    <template id="image_sale_order_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_description']" position="before">
+            <th class="text-start">Image</th>
+        </xpath>
+        <xpath expr="//td[@name='td_name']" position="before">
+            <td>
+                <img t-att-src="image_data_uri(line.product_template_id.image_1920) "
+                     style="max-height:70pt;max-width:70%"/>
+            </td>
+        </xpath>
+    </template>
+</odoo>

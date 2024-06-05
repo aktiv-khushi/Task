@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--     This template renders a welcome page for users who have successfully signed up.-->
+<odoo>
+    <template id="welcome_template" name="Welcome Form">
+         <t t-call="website.layout">
+            <div class="container mt16 mb16">
+                <div class="jumbotron text-center">
+                    <img src="/controller_signup/static/src/img/welcome.jpg" alt="Welcome Image" class="img-fluid mt16 mb16"/>
+                    <b><h1>Congratulations on signing up!</h1></b>
+                    <p>Welcome to our platform. Click the button below to proceed.</p>
+                    <a href="/user_detail" class="btn btn-primary">Next</a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

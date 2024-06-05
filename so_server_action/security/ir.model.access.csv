@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+so_server_action.access_combine_customer,access_combine_customer,so_server_action.model_combine_customer,base.group_user,1,1,1,1

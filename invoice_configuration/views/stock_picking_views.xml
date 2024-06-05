@@ -1,0 +1,32 @@
+<odoo>
+    '''Add button and invisible config.'''
+    <record id="stock_picking_view_form_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.view.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button type="object" name="action_create_invoice"
+                        string="Create Invoice"
+                        class="oe_highlight"
+                        invisible="show_create_bill_button == True or show_create_invoice_and_bill_button == True"/>
+                <button type="object" name="action_create_bill"
+                        string="Create Bill"
+                        class="oe_highlight"
+                        invisible="show_create_invoice_button == True or show_create_invoice_and_bill_button == True"/>
+                <button type="object" name="action_create_invoice_bill"
+                        string="Create invoice/bill"
+                        class="oe_highlight"
+                        invisible="show_create_invoice_and_bill_button == False"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="show_create_invoice_button"/>
+                <field name="show_create_bill_button"/>
+                <field name="show_create_invoice_and_bill_button"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+
+

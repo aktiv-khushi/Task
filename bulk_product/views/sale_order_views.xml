@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    '''inherit sale order form view and add filter and group by'''
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <group>
+                    <field name="bulk_product_template"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_search_inherit" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="after">
+                <filter string="Bulk Product Template" name="group_by_bulk_product_template" context="{'group_by': 'bulk_product_template'}"/>
+            </xpath>
+             <xpath expr="//filter" position="after">
+                <filter string="Bulk Product Template" name="bulk_product_template" domain="[('bulk_product_template', '!=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

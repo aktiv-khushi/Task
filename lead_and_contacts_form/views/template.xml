@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="radio_button" name="Button">
+        <t t-call="website.layout">
+            <section class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                <div class="container">
+                    <form id="contactus_HHHform" action="/form" method="post">
+                        <div class="form-group">
+                            <label for="phone" class="control-label">Phone</label>
+                            <input type="text" name="phone" t-att-value="phone" id="phone"
+                                   class="form-control"/>
+                        </div>
+                        <div class="mb-0 py-2 col-12 s_website_form_submit" data-name="Submit Button">
+                            <div style="width: 200px;" class="s_website_form_label"/>
+                            <a href="#" role="button" class="btn btn-primary s_website_form_send">Submit</a>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+                        <div style="margin-left: 70px;margin-top: 30px;">
+                            <form>
+                                <fieldset>
+                                    <div>
+                                        <input type="radio" id="contactChoice1" name="contact" value="lead"/>
+                                        <label for="contactChoice1">Lead</label>
+                                        <input type="radio" id="contactChoice2" name="contact" value="contact"/>
+                                        <label for="contactChoice2">Contact</label>
+                                    </div>
+                                                            <div>
+                                                                <button type="submit">Submit</button>
+                                                            </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="container">
+                            <t t-if="contact == 'lead'">
+                                <div class="column1">
+                                    <form role="form" action="/formm" method="POST">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="form-group">
+                                            <label for="name" class="control-label">Name</label>
+                                            <input type="text" name="name" t-att-value="name" id="name"
+                                                   class="form-control" required="required"/>
+                                        </div>
+                                                    <div class="form-group">
+                                                        <label for="phone" class="control-label">Phone</label>
+                                                        <input type="text" name="phone" t-att-value="phone" id="phone"
+                                                               class="form-control"/>
+                                                    </div>
+                                        <div class="form-group">
+                                            <label for="mobile" class="control-label">Mobile</label>
+                                            <input type="text" name="mobile" t-att-value="mobile" id="mobile"
+                                                   class="form-control"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="column1">
+                                    <form role="form" action="/form" method="POST">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="form-group">
+                                            <label for="name" class="control-label">Name</label>
+                                            <input type="text" name="name" t-att-value="name" id="name"
+                                                   class="form-control" required="required"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mobile" class="control-label">Mobile</label>
+                                            <input type="text" name="mobile" t-att-value="mobile" id="mobile"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="control-label">Email</label>
+                                            <input type="text" name="email" t-att-value="email" id="email"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="country">Country</label>
+                                            <select name="country" id="Country" class="form-control">
+                                                <option value=""/>
+                                                <t t-foreach="countries" t-as="c">
+                                                    <option t-att-value="c.id">
+                                                        <t t-esc="c.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <br/>
+                                    </form>
+                                </div>
+                            </t>
+                            <br/>
+            <!--                <center>-->
+
+            <!--                                    <div class="clearfix oe_login_buttons">-->
+            <!--                                        <a href="success">-->
+            <!--                                        <button type="submit" class="btn btn-primary pull-left">Submit</button>-->
+            <!--                                        </a>-->
+            <!--                                    </div>-->
+            <!--&lt;!&ndash;                    </a>&ndash;&gt;-->
+            <!--                </center>-->
+            <!--            </div>-->
+        </t>
+    </template>
+    <template id="thank_you" name="Thanks Message">
+        <span style="font-size:30px; color: Brown;">
+            <center>
+                <p>Lead successfully created!!!</p>
+            </center>
+        </span>
+    </template>
+
+    <record id="website_menu_create" model="website.menu">
+        <field name="name">Advance Form</field>
+        <field name="url">/form</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">80</field>
+    </record>
+</odoo>

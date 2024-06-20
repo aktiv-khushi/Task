@@ -1,0 +1,30 @@
+<odoo>
+    <template id="my_custom_footer">
+        <center>1st Street Thomas Edison ∙ 67450 MUNDOLSHEIM</center>
+        <center>Tel +33(0) 3889660 24 ∙ Fax +33(0) 38896 61 98 ∙ info@axiomtubes.en ∙ www.axiomtubes.en</center>
+        <center>Share capital of €250,000 ∙ SIRET No. 522 773 662 00021 ∙ APE 4690 Z ∙ Intracommunity VAT No. FR 69 522
+            773 662
+        </center>
+    </template>
+    <template id="my_custom_header">
+        <div class="d-flex" style=" margin: auto;width: 50%;">
+            <div class="flex-shrink-0">
+                <img t-att-src="image_data_uri(o.company_id.logo)"
+                     style="max-width: 200px; max-height: 100px;" alt="Company Logo"/>
+            </div>
+<!--            <div style="border-left: 2px solid black;height: 65px;"></div>-->
+            <div class="flex-grow-1 ms-3">
+                <div class="o_address_format">
+                    <span t-esc="o.company_id.street"/>
+                    <br/>
+                    <span t-esc="o.company_id.street2"/>
+                    <span t-esc="o.company_id.city"/>
+                    <br/>
+                    <span t-esc="o.company_id.state_id.name"/>
+                    <span t-esc="o.company_id.zip"/>
+                    <span t-esc="o.company_id.country_id.name"/>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

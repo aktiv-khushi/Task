@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--Record to create a server action for combining quotations and deleting duplicates in sale orders.-->
+        <record id="action_server_state_customer_invoices" model="ir.actions.server">
+            <field name="name">Combine Quotations and Delete others</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_sale_order"/>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code">
+                records.action_combine_sale_order()
+            </field>
+        </record>
+    </data>
+</odoo>

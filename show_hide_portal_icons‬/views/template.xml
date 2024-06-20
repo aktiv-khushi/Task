@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="side_content_inherit" inherit_id="portal.side_content">
+        <!-- This template adds buttons to show or hide the project section -->
+        <xpath expr="//div[@class='o_my_contact']" position="after">
+             <div class="container" id="hide_show_buttons">
+                 <!-- This button toggles the visibility of the project section -->
+                <a t-attf-href="/my/home"
+                   id="hide_project_section"
+                   class="btn btn-outline-primary m-2"
+                   t-esc="'Show All Sections' if request.env.user.project_section_hidden else 'Hide Project Details'">
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="show_hide_project_section" inherit_id="project.portal_my_home">
+        <!-- This template controls the visibility of the project section based on user settings -->
+        <xpath expr="//div[@id='portal_service_category']" position="attributes">
+            <!-- This attribute dynamically sets the class to hide or show the project section -->
+            <attribute name="t-attf-class">#{'d-none' if request.env.user.project_section_hidden else 'o_portal_category row g-2 mt-3'}
+                <!-- These calls render the portal documents entries -->
+                <t t-call="portal.portal_docs_entry"/>
+                <t t-call="portal.portal_docs_entry"/>
+                <t t-call="portal.portal_docs_entry"/>
+            </attribute>
+        </xpath>
+    </template>
+
+</odoo>

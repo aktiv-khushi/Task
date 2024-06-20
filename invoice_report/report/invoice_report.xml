@@ -1,0 +1,169 @@
+<odoo>
+    <template id="invoice_report_pdf">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="header">
+                        <t t-call="invoice_report.my_custom_header"/>
+                    </div>
+                    <hr/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="container">
+                        <div class="row" style="font-size: 20px;">
+                            <div class="col-6">
+                                <span>Invoice Address :</span>
+                                <div t-field="o.partner_id"
+                                     t-options="{'widget': 'contact', 'fields': ['address', 'phone', 'email']}">
+                                </div>
+                            </div>
+                            <div class="col-10">
+                                <span>
+                                    Delivery Address :
+                                </span>
+                                <div t-field="o.partner_shipping_id"
+                                     t-options="{'widget': 'contact', 'fields': ['address']}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <p class="fs-4 text-muted" style="font-size: 30px;">
+                        <t t-esc="o.name"/>
+                    </p>
+                    <br/>
+                    <div class="container">
+                        <div class="row" style="font-size: 20px;">
+                            <div class="col-2">
+                                <span>Invoice Date:
+                                    <br/>
+                                    <t t-esc="o.invoice_date"/>
+                                </span>
+                            </div>
+                            &#160;&#160;&#160;
+                            <div class="col-3">
+                                <span>Due Date :
+                                    <br/>
+                                    <t t-esc="o.invoice_date_due"/>
+                                </span>
+                            </div>
+                            <div class="col-4">
+                                <span>Origin :
+                                    <br/>
+                                    <t t-esc="o.partner_id.name"/>
+                                </span>
+                            </div>
+                            <div class="col-5">
+                                <span>Reference:
+                                    <br/>
+                                    <t t-esc="o.payment_reference"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th name="th_product">
+                                    <strong>Discription</strong>
+                                </th>
+                                <th>
+                                    <strong>Tax</strong>
+                                </th>
+                                <th name="th_from" align="left">
+                                    <strong>Qty</strong>
+                                </th>
+                                <th name="th_to">
+                                    <strong>Price</strong>
+                                </th>
+                                <th name="th_serial_number" class="text-center">
+                                    <strong>Subtotal</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach='o.invoice_line_ids' t-as="k">
+                                <td>
+                                    <span>
+                                        <t t-esc="k.product_id.name"/>
+                                    </span>
+                                    <br/>
+                                </td>
+                                <td>
+                                    <span>
+                                        <t t-esc="k.tax_ids.id"/>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span>
+                                        <t t-esc="k.quantity"/>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span>
+                                        <t t-esc="k.price_unit"/>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span>
+                                        <t t-esc="k.price_subtotal"/>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm">
+                        <tr>
+                            <td colspan="10" class="text-end">Untaxed Amount :</td>
+                            <td colspan="11" class="text-end">
+                                <t t-esc="o.amount_untaxed"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="text-end">Tax 15% :</td>
+                            <td colspan="11" class="text-end">
+                                <t t-esc="o.amount_untaxed"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" class="text-end">Subtotal :</td>
+                            <td colspan="11" class="text-end">
+                                <t t-esc="o.amount_total"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <div>
+                        <span>Please use the following communication for your payment:
+                            <t t-esc="o.name"/>
+                        </span>
+                        <br/>
+                        <span>Payment condition</span>
+                        <br/>
+                    </div>
+                    <div class="footer">
+                        <hr/>
+                        <t t-call="invoice_report.my_custom_footer"/>
+                    </div>
+                </div>
+                <p style="page-break-before:always;"/>
+                <div class="page">
+                    <hr/>
+                    <div style="margin-left:40px;">
+                        <span style="font-family:CenturyGothic Bold;color:#293A66">
+                            <b>Extraits du code de la consommation</b>
+                        </span>
+                        <br/>
+                        <span style="font-size: 20px;">
+                            <strong>Article L.111-1</strong>
+                            <t t-esc="o.narration"/>
+                        </span>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

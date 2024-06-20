@@ -1,0 +1,24 @@
+<odoo>
+<!--Record to add a "Sales Commission History" button and display the sales commission count on the partner form view.-->
+    <record id="view_partner_form_commission" model="ir.ui.view">
+        <field name="name">res.partner.form.commission</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_sale_order']" position="before">
+                <button name="action_view_sales_commission"
+                        type="object"
+                        string="Sales Commission History"
+                        class="oe_stat_button"
+                        icon="fa-bar-chart"
+                        groups="sales_team.group_sale_manager"
+                />
+            </xpath>
+            <xpath expr="//page[@name='sales_purchases']" position="inside">
+                <group string="Sales Commissions">
+                    <field name="sale_commission_count"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

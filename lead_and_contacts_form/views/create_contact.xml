@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="create_contact" name="Lead">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <div class="container">
+                        <form role="form" action="/create_contact" method="POST">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="form-group">
+                                <label for="name" class="control-label">Name</label>
+                                <input type="text" name="name" t-att-value="name" id="name"
+                                       class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile" class="control-label">Mobile</label>
+                                <input type="text" name="mobile" t-att-value="mobile" id="mobile"
+                                       class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="control-label">Email</label>
+                                <input type="text" name="email" t-att-value="email" id="email"
+                                       class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <select name="country" id="Country" class="form-control">
+                                    <option value=""/>
+                                    <t t-foreach="countries" t-as="c">
+                                        <option t-att-value="c.id">
+                                            <t t-esc="c.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <br/>
+                            <center>
+<!--                                 <a href="success">-->
+                                    <div class="clearfix oe_login_buttons">
+                                        <button type="submit" class="btn btn-primary pull-left">Submit</button>
+                                    </div>
+<!--                                 </a>-->
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

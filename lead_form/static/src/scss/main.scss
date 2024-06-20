@@ -1,0 +1,25 @@
+// // .form-check input> .test{
+// //     display:none;
+// // }
+//
+// .test2{
+//     display:none;
+// }
+// // .test_class input[type="radio"]:checked ~ .test{
+// //     display:block;
+// // }
+// .test_class2 input[type="radio"]:checked ~ .test2{
+//     display:block;
+// }
+// // .form-check input[type="radio"]:checked ~ .mb-3{
+// //     display:block;
+// // }
+
+// .test_class > input[type="radio"]:checked div {
+//     background-color:red;
+// }
+
+div input[type="radio"]:checked+div {
+    background-color:red;
+//     display:block;
+}

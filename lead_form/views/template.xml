@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="lead_and_contact_form" name="Form">
+        <t t-call="website.layout">
+            <div class="container">
+                <form id="contactus_form" action="/success" method="POST">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div>
+                        <input type="radio" id="selection" name="radioselection" class="form-check-input"/>Lead
+                        <input type="radio" id="selection" name="radioselection" class="form-check-input"/>contact
+<!--                        <div class="test2">-->
+<!--                            dddd-->
+<!--                        </div>-->
+                        <div class="test">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name"
+                                       placeholder="abc"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone"
+                                       placeholder="1243"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mobile" class="form-label">Mobile</label>
+                                <input type="text" class="form-control" id="mobile"
+                                       placeholder="1323454"/>
+                            </div>
+                        </div>
+<!--                        <label class="form-check-label" for="flexRadioDefault1">-->
+<!--                            Lead-->
+<!--                        </label>-->
+
+<!--                        <input type="radio" id="selection" name="radioselection" class="form-check-input"/>-->
+<!--                        <label class="form-check-label" for="flexRadioDefault1">-->
+<!--                            Contact-->
+<!--                        </label>-->
+                    </div>
+                    <!--                    &lt;!&ndash; Radio Buttons &ndash;&gt;-->
+                    <!--                    &lt;!&ndash; Lead &ndash;&gt;-->
+                    <!--                    <div class="form-check form-check-inline test_class">-->
+                    <!--                        <input type="radio" id="selection" name="radioselection" class="form-check-input"-->
+                    <!--                               />-->
+                    <!--                        <label class="form-check-label" for="flexRadioDefault1">-->
+                    <!--                            Lead-->
+                    <!--                        </label>-->
+                    <!--                        &lt;!&ndash; Inputs for lead  &ndash;&gt;-->
+                    <!--                        <div class="test">-->
+                    <!--                            <div class="mb-3">-->
+                    <!--                                <label for="name" class="form-label">Name</label>-->
+                    <!--                                <input type="text" class="form-control" id="name"-->
+                    <!--                                       placeholder="abc"/>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="mb-3">-->
+                    <!--                                <label for="phone" class="form-label">Phone</label>-->
+                    <!--                                <input type="text" class="form-control" id="phone"-->
+                    <!--                                       placeholder="1243"/>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="mb-3">-->
+                    <!--                                <label for="mobile" class="form-label">Mobile</label>-->
+                    <!--                                <input type="text" class="form-control" id="mobile"-->
+                    <!--                                       placeholder="1323454"/>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    &lt;!&ndash; Contact &ndash;&gt;-->
+                    <!--                    <div class="form-check form-check-inline test_class2" style="background-color:pink;">-->
+                    <!--                        <input type="radio" id="selection" name="radioselection" class="form-check-input"/>-->
+                    <!--                        <label class="form-check-label" for="flexRadioDefault1">-->
+                    <!--                            Contact-->
+                    <!--                        </label>-->
+                    <!--                    </div>-->
+                    <!--                    <br/>-->
+
+                    <!--                    &lt;!&ndash; Inputs for contacts &ndash;&gt;-->
+                    <!--                    <div class="test2">-->
+                    <!--                        <div class="mb-3">-->
+                    <!--                            <label for="name" class="form-label">Name</label>-->
+                    <!--                            <input type="text" class="form-control" id="name"-->
+                    <!--                                   placeholder="abc"/>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="mb-3">-->
+                    <!--                            <label for="email" class="form-label">Email</label>-->
+                    <!--                            <input type="text" class="form-control" id="email"-->
+                    <!--                                   placeholder="@gmail.com"/>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="mb-3">-->
+                    <!--                            <label for="mobile" class="form-label">Mobile</label>-->
+                    <!--                            <input type="text" class="form-control" id="mobile"-->
+                    <!--                                   placeholder="1323454"/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+
+                    <!--                        <label>-->
+                    <!--                            <input type="radio" name="configoption[14]" value="43"/>-->
+                    <!--                            Lead-->
+                    <!--                            <div class="description">-->
+                    <!--                                &lt;!&ndash;                                <form role="form" action="/formm" method="POST">&ndash;&gt;-->
+                    <!--                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+                    <!--                                <div class="form-group">-->
+                    <!--                                    <label for="name" class="control-label">Name</label>-->
+                    <!--                                    <input type="text" name="name" t-att-value="name" id="name"-->
+                    <!--                                           class="form-control" required="required"/>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="form-group">-->
+                    <!--                                    <label for="phone" class="control-label">Phone</label>-->
+                    <!--                                    <input type="text" name="phone" t-att-value="phone" id="phone"-->
+                    <!--                                           class="form-control"/>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="form-group">-->
+                    <!--                                    <label for="mobile" class="control-label">Mobile</label>-->
+                    <!--                                    <input type="text" name="mobile" t-att-value="mobile" id="mobile"-->
+                    <!--                                           class="form-control"/>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </label>-->
+
+                    <!--                    </div>-->
+                    <!--                    <div class="form-group">-->
+                    <!--                        <label>-->
+                    <!--                            <input type="radio" name="configoption[14]" value="44"/>-->
+                    <!--                            Contact-->
+                    <!--                            <div class="description">-->
+                    <!--                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+                    <!--                                <div class="form-group">-->
+                    <!--                                    <label for="name" class="control-label">Name</label>-->
+                    <!--                                    <input type="text" name="name" t-att-value="name" id="name"-->
+                    <!--                                           class="form-control" required="required"/>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="form-group">-->
+                    <!--                                    <label for="mobile" class="control-label">Mobile</label>-->
+                    <!--                                    <input type="text" name="mobile" t-att-value="mobile" id="mobile"-->
+                    <!--                                           class="form-control"/>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="form-group">-->
+                    <!--                                    <label for="email" class="control-label">Email</label>-->
+                    <!--                                    <input type="text" name="email" t-att-value="email" id="email"-->
+                    <!--                                           class="form-control"/>-->
+                    <!--                                </div>-->
+                    <!--                                &lt;!&ndash;                                <div class="form-group">&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    <label for="country">Country</label>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    <select name="country" id="Country" class="form-control">&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                        <option value=""/>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                        <t t-foreach="countries" t-as="c">&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                            <option t-att-value="c.id">&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                                <t t-esc="c.name"/>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                            </option>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                        </t>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                    </select>&ndash;&gt;-->
+                    <!--                                &lt;!&ndash;                                </div>&ndash;&gt;-->
+                    <!--                            </div>-->
+                    <!--                        </label>-->
+                    <!--                    </div>-->
+                </form>
+            </div>
+            <!--            <center>-->
+            <!--                <div class="clearfix oe_login_buttons">-->
+            <!--                    <a href="/success">-->
+            <!--                        <button type="submit" class="btn btn-primary pull-left">Submit</button>-->
+            <!--                    </a>-->
+            <!--                </div>-->
+            <!--            </center>-->
+        </t>
+    </template>
+
+
+    <template id="thank_you" name="Thanks Message">
+        <span style="font-size:30px; color: Brown;">
+            <center>
+                <p>Lead successfully created!</p>
+            </center>
+        </span>
+    </template>
+    <record id="website_menu_create" model="website.menu">
+        <field name="name">Advance Form</field>
+        <field name="url">/route_lead</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">80</field>
+    </record>
+
+</odoo>

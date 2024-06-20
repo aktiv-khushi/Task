@@ -11,6 +11,7 @@
                     <a href="/user_detail" class="btn btn-primary">Next</a>
                 </div>
             </div>
+
         </t>
     </template>
 </odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="thank_you" name="Thanks Message">
+        <span style="font-size:30px; color: Brown;">
+            <center>
+                <p>Lead successfully created!</p>
+            </center>
+        </span>
+    </template>
+
+    <template id="thank_youuuu" name="Thanks Message">
+        <span style="font-size:30px; color: Brown;">
+            <center>
+                <p>contact successfully created!</p>
+            </center>
+        </span>
+    </template>
+</odoo>

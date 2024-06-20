@@ -8,10 +8,9 @@
     'sequence': 15,
     'summary': 'controllers',
     'website': 'https://www.odoo.com/app/crm',
-    'depends': ['sale_management', 'website'],
+    'depends': ['website',],
     'data': [
         'views/template.xml',
-
     ],
     'installable': True,
     'application': True,

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--        Record to extend the sale order form view by adding a 'sales_commission' field after payment_term_id.-->
+    <record id="view_sale_order_forms" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="sales_commission"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -7,7 +7,7 @@ class ResPartner(models.Model):
     dob = fields.Datetime("Date Of Birth")
     pob = fields.Char("Place of Birth")
     gender = fields.Selection([("male", "Male"), ("female", "Female"), ("other", "Other")], string="Gender")
-    passport = fields.Char("Passport")
+    passport = fields.Integer("Passport")
     license = fields.Char("Driving License")
     language = fields.Selection([('hindi', 'Hindi'), ('gujarati', 'gujarati'), ('eng', 'English')],
                                 string="Specking Language", widget="radio")

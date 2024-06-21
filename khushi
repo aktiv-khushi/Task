@@ -1,5 +1,5 @@
 python3.8 odoo-bin --addons=addons/,/home/desktop/workplace/khushi --xmlrpc-port=1111 --db-filter=school_v16_20-10-23
-
+hello github
 ________________________________________________________________________________________________________
 
 http://localhost:1111/web?debug=1#action=36&model=ir.module.module&view_type=kanban&cids=1&menu_id=5

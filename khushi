@@ -1,0 +1,62 @@
+python3.8 odoo-bin --addons=addons/,/home/desktop/workplace/khushi --xmlrpc-port=1111 --db-filter=school_v16_20-10-23
+
+________________________________________________________________________________________________________
+
+http://localhost:1111/web?debug=1#action=36&model=ir.module.module&view_type=kanban&cids=1&menu_id=5
+
+Devloper mode on - ?debug=1
+
+________________________________________________________________________________________________________
+
+sql 
+select- selete * from table_name;
+insert- insert into table_name values;
+update - update table_name set column1=val1 , column2=val2,...where id;
+delete - delete from table_name where id;
+
+____________________________________________________________________________________________________
+
+https://pms.erpharbor.in/web/login
+
+khushi.d.erpharbor@gmail.com
+khushi@ehcs
+
+github
+
+password: KhushiEHCS08
+username: khushi-erpharbor
+
+
+gitlab
+
+password: SiekoQL50937
+username: khushi-erpharbor
+
+_______________________________________________________________________________________________________
+
+python3.8 odoo-bin --addons=addons/,/home/desktop/workplace/home_one --xmlrpc-port=8888 --db-filter=car_m_v16  -u car_management
+
+
+product_03_01
+
+desktop@desktop:~/workplace/odoo/16.0$ python3.8 odoo-bin --addons=addons/,/home/desktop/workplace/khushi --db_port 5433 --xmlrpc-port=8888 --db-filter=product_03_01 -d product_03_01 -u product_extended
+
+
+attribute_id compute field
+
+attribute_id legs hoi to boolean true
+
+python3.8 odoo-bin --addons=addons/,//home/desktop/workplace/home_one --db_port 5433 --xmlrpc-port=1111 -d restaurants_06_01_24 
+
+
+
+khushi.d273
+@@khushi.d273
+
+khushi.d2703
+
+
+
+
+
+        

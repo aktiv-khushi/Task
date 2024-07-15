@@ -1,0 +1,46 @@
+.input-container {
+    display: none;
+    margin-top: 10px;
+ }
+
+#aadhar:checked ~ #aadharInput {
+    display: block;
+}
+
+#pan:checked ~ #paninput {
+    display: block;
+}
+
+#voter:checked ~ #voterid {
+    display: block;
+}
+
+.question {
+    display: none;
+    margin-top: 10px;
+}
+
+#yes:checked ~ #yesInput {
+    display: block;
+}
+/* Basic styling for range input */
+.range-container {
+text-align: center;
+}
+/* Display current range value */
+.range-value {
+margin-top: 10px;
+font-size: 18px;
+}
+.error-message {
+color: red;
+font-size: 14px;
+margin-top: 5px;
+display: none;
+}
+// .form-check-input:checked + .form-check-label::after {
+// content: ' ✓';
+// }
+//
+// .form-check-input:disabled + .form-check-label {
+// color: #999;

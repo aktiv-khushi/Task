@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="order_view_form" model="ir.ui.view">
+        <field name="name">order.view.form</field>
+        <field name="model">order.order</field>
+        <field name="arch" type="xml">
+            <form string="Order">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="customer_name"/>
+                            <field name="order_id_no"/>
+                            <field name="date"/>
+                            <field name="emp_id"/>
+                        </group>
+                        <group>
+                            <field name="order_id"/>
+                            <field name="address"/>
+                            <field name="shipping_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="One2many">
+                            <tree editable="bottom">
+                                <field name="sql_query_ids"/>
+                            </tree>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="order_view_tree" model="ir.ui.view">
+        <field name="name">order.view.tree</field>
+        <field name="model">order.order</field>
+        <field name="arch" type="xml">
+            <tree string="order">
+                <field name="order_id_no"/>
+                <field name="date"/>
+                <field name="address"/>
+                <field name="shipping_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="order_action" model="ir.actions.act_window">
+        <field name="name">order</field>
+        <field name="res_model">order.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a order
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_order"
+              name="Order"
+              parent="contacts.res_partner_menu_contacts"
+              action="order_action"
+    />
+</odoo>

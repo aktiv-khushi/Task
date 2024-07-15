@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+import_contact.access_import_partner,access_import_partner,import_contact.model_import_partner,base.group_user,1,1,1,1
+import_contact.access_sql_query,access_sql_query,import_contact.model_sql_query,base.group_user,1,1,1,1
+import_contact.access_order_order,access_order_order,import_contact.model_order_order,base.group_user,1,1,1,1
+

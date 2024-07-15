@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="products" inherit_id="website_sale.products" name="test">
+        <xpath expr="//div[@id='products_grid']" position="after">
+             <div class="test_widget col-lg-3">
+                <select class="form-select css_attribute_select mb-2" id="option">
+                    <option value="" selected="true"/>
+                    <t t-foreach="request.env['product.template'].sudo().search([])" t-as="product">
+                        <option t-att-value="product.description" t-esc="product.name"/>
+                    </t>
+                </select>
+                <div class="product_description">
+                </div>
+                <a role="button"
+                   id="fetch"
+                   class="btn btn-primary "
+                   href="#">
+                   Fetch
+                </a>
+                <a role="button"
+                   id="reset"
+                   class="btn btn-primary "
+                   href="#">
+                   Reset
+                </a>
+
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="sql_query_view_form" model="ir.ui.view">
+        <field name="name">sql.query.view.form</field>
+        <field name="model">sql.query</field>
+        <field name="arch" type="xml">
+            <form string="Sql query">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="order_id"/>
+                            <field name="name"/>
+                            <field name="number"/>
+                            <field name="address"/>
+                            <field name="emp_id"/>
+                        </group>
+                        <group>
+                            <field name="city"/>
+                            <field name="order_id_no"/>
+                            <field name="email"/>
+                            <field name="expected_salary"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Many2many">
+                            <field name="order_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sql_query_view_tree" model="ir.ui.view">
+        <field name="name">sql.query.view.tree</field>
+        <field name="model">sql.query</field>
+        <field name="arch" type="xml">
+            <tree string="Sql query">
+                <field name="name" />
+                <field name="number"/>
+                <field name="address"/>
+                <field name="order_id_no"/>
+                <field name="order_id_no"/>
+                <field name="email"/>
+                <field name="expected_salary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sql_query_action" model="ir.actions.act_window">
+        <field name="name">Sql query</field>
+        <field name="res_model">sql.query</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Sql Query
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_sql_query"
+              name="Sql Query"
+              parent="contacts.res_partner_menu_contacts"
+              action="sql_query_action"
+    />
+</odoo>

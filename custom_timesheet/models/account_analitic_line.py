@@ -9,18 +9,20 @@ class AnalyticLine(models.Model):
 
     @api.model
     def create(self, vals):
-        '''Overrides the create method to add validation checks for the date field.
-        This method ensures that the date of the timesheet entry is not more than 7 days in the past
-        and is not on a Saturday or Sunday. It calls the _check_date method for this validation.'''
+        '''Overrides the create method to add validation,
+         checks for the date field.'''
         self._check_date(vals['date'])
         return super(AnalyticLine, self).create(vals)
 
     def write(self, vals):
-        '''Overrides the write method to add validation checks for the date field and restrict editing
+        '''Overrides the write method to add validation,
+         checks for the date field and restrict editing
         to users in the 'Timesheet Manager' group or administrators.'''
 
         if not (self.env.user.has_group('hr_timesheet.group_timesheet_manager')):
-            raise ValidationError("Only managers or administrators can edit timesheet entries.")
+            raise ValidationError(
+                "Only managers or administrators can edit timesheet entries."
+            )
         if 'date' in vals:
             self._check_date(vals['date'])
         return super(AnalyticLine, self).write(vals)

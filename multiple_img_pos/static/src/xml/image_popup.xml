@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+<!--Template for displaying multiple images in a popup for a product.-->
+    <t t-name="multiple_image_pos.MultiImagePopup" owl="1">
+        <div class="popup popup-confirm">
+            <div class="modal-header">
+                <h3 class="modal-title">Product Images</h3>
+`               <!--cancel - Closes the popup.-->
+                <div class="btn" t-on-click="cancel">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+            </div>
+            <t t-if="this.props.data.length > 0">
+                <div id="carouselExampleIndicators" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img id="itemDisplay" t-ref="itemDisplay" class="d-block w-100"/>
+                        </div>
+                    </div>
+                    <!--slidePrev - Moves to the previous image in the carousel.-->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev" t-on-click="slidePrev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <!--slideNext - Moves to the next image in the carousel.-->
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next" t-on-click="slideNext">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="container">
+                    <div class="row mt-3">
+                        <h3><b>No images added for this product</b></h3>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

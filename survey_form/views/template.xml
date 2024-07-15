@@ -117,6 +117,7 @@
                                                                 <option value="IE">Ireland</option>
                                                                 <option value="IM">Isle of Man</option>
                                                                 <option value="IT">Italy</option>
+                                                                <option value="IN">Indian</option>
                                                                 <option value="JE">Jersey</option>
                                                                 <option value="XK">Kosovo</option>
                                                                 <option value="LV">Latvia</option>
@@ -201,6 +202,10 @@
                                                         <div class="col-9">
                                                             <input type="radio" name="identity" id="aadhar"/>
                                                             <label for="aadhar">Aadhar Card</label>
+                                                            <input type="radio" name="identity" id="pan"/>
+                                                            <label for="aadhar">Pan Card</label>
+                                                            <input type="radio" name="identity" id="voter"/>
+                                                            <label for="aadhar">VoterID Card</label>
                                                             <div class="input-container" id="aadharInput">
                                                                 <label for="aadharNumber">Aadhar Card Number:
                                                                 </label>
@@ -208,16 +213,12 @@
                                                                        class="form-control"
                                                                        name="aadharNumber"/>
                                                             </div>
-                                                            <input type="radio" name="identity" id="aadhar"/>
-                                                            <label for="aadhar">Pan Card</label>
-                                                            <div class="input-container" id="aadharInput">
+                                                            <div class="input-container" id="paninput">
                                                                 <label for="panNumber">PAN Card Number:</label>
                                                                 <input type="text" id="panNumber"
                                                                        class="form-control"
                                                                        name="panNumber"/>
                                                             </div>
-                                                            <input type="radio" name="identity" id="aadhar"/>
-                                                            <label for="aadhar">VoterID Card</label>
                                                             <div class="input-container" id="voterid">
                                                                 <label for="voterNumber">Voter ID Number:</label>
                                                                 <input type="text" id="voterNumber"
@@ -236,62 +237,55 @@
                                                         <div class="col-5">
                                                             <input type="radio" name="question" id="yes"/>
                                                             <label for="aadhar">Yes</label>
+                                                            <input type="radio" name="question" id="no"/>
+                                                            <label for="aadhar">No</label>
+
                                                             <div class="question" id="yesInput">
-                                                                <label for="questionText">Specify your question:
-                                                                </label>
+                                                                <label for="questionText">Specify your question:</label>
                                                                 <input type="text" id="questionText"
                                                                        name="questionText"
                                                                        class="form-control"/>
                                                             </div>
-                                                            <input type="radio" name="question" id="no"/>
-                                                            <label for="aadhar">No</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12" style="margin-top:25px;">
                                                     <div class="row">
-                                                        <div class="col-6">
+                                                        <div class="col-4">
                                                             <label for="text">When would you like to connect ?
                                                             </label>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <div class="form-check form-check-inline"
-                                                                 style="margin-left: 10px;">
+                                                        <div class="col-8">
+                                                            <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                       id="inlineCheckbox1"
-                                                                       value="option1"/>
-                                                                <label class="form-check-label"
-                                                                       for="inlineCheckbox1">
+                                                                       id="inlineCheckbox1" value="09:00"/>
+                                                                <label class="form-check-label" for="inlineCheckbox1">
                                                                     09:00
                                                                 </label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                       id="inlineCheckbox2"
-                                                                       value="option2"/>
-                                                                <label class="form-check-label"
-                                                                       for="inlineCheckbox2">
+                                                                       id="inlineCheckbox2" value="11:00"/>
+                                                                <label class="form-check-label" for="inlineCheckbox2">
                                                                     11:00
                                                                 </label>
                                                             </div>
-                                                            <div class="form-check form-check-inline"
-                                                                 style="margin-left:10px;">
+                                                            <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                       id="inlineCheckbox1"
-                                                                       value="option3"/>
-                                                                <label class="form-check-label"
-                                                                       for="inlineCheckbox1">
+                                                                       id="inlineCheckbox3" value="03:00"/>
+                                                                <label class="form-check-label" for="inlineCheckbox3">
                                                                     03:00
                                                                 </label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="checkbox"
-                                                                       id="inlineCheckbox2"
-                                                                       value="option4"/>
-                                                                <label class="form-check-label"
-                                                                       for="inlineCheckbox2">
+                                                                       id="inlineCheckbox4" value="06:00"/>
+                                                                <label class="form-check-label" for="inlineCheckbox4">
                                                                     06:00
                                                                 </label>
+                                                            </div>
+                                                            <div class="error-message" id="error-message">*Only two
+                                                                options can be selected.
                                                             </div>
                                                         </div>
                                                     </div>
@@ -301,35 +295,46 @@
                                                         <div class="col-5">
                                                             <label for="text">Expected salary range</label>
                                                         </div>
-                                                        <div class="col-7">
-                                                            <input type="range" class="form-range"
-                                                                   id="customRange1"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12" style="margin-top:25px;">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                            <label for="favcolor">Select your favorite color :
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-7">
-                                                            <input type="color" id="favcolor" name="favcolor"
-                                                                   value="#ff0000"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        <div class="container">
+                                                            <div class="row justify-content-center mb-3">
+                                                                <div class="col-12 col-md-8 range-container">
+                                                                    <input type="range" min="1000" max="30000"
+                                                                           value="1000"
+                                                                           step="1000" class="form-range range-slider"
+                                                                           id="salaryRange1"/>
+                                                                    <div class="range-value">
+                                                                        Selected Range: $
+                                                                        <span id="rangeValue1">1000</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                                <div class="col-12" style="margin-top:25px;">
-                                                    <div class="row">
-                                                        <div class="col-7">
-                                                            <label for="share">Other thing you would like to share :
-                                                            </label>
                                                         </div>
-                                                        <div>
-                                                            <input type="text" name="thing" t-att-value="share"
-                                                                   id="share"
-                                                                   class="form-control" required="required"/>
+                                                    </div>
+                                                    <div class="col-12" style="margin-top:25px;">
+                                                        <div class="row">
+                                                            <div class="col-5">
+                                                                <label for="favcolor">Select your favorite color :
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <input type="color" id="favcolor" name="favcolor"
+                                                                       value="#ff0000"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12" style="margin-top:25px;">
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <label for="share">Other thing you would like to share :
+                                                                </label>
+                                                            </div>
+                                                            <div>
+                                                                <input type="text" name="thing" t-att-value="share"
+                                                                       id="share"
+                                                                       class="form-control" required="required"/>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -342,9 +347,9 @@
                             <br/>
                             <div>
                                 <center>
-                                    <input type="reset" value="Reset"/>
+                                    <input type="reset" value="Reset" class="btn btn-outline-secondary" style="margin-right:15px;"/>
                                     <a href="/success">
-                                        <input type="submit" value="Submit"/>
+                                        <input type="submit" value="Submit" class="btn btn-outline-success"/>
                                     </a>
                                 </center>
                             </div>
@@ -354,25 +359,40 @@
                 </div>
             </div>
             <br/>
-            <style>
-                .input-container {
-                display: none;
-                margin-top: 10px;
-                }
+            <script src="salary_range.js"></script>
 
-                input[type="radio"]:checked + label + .input-container {
-                display: block;
+            <script>
+                // JavaScript to display current range value for each slider
+                for (let i = 1; i &lt;= 7; i++) {
+                const rangeInput = document.getElementById(`salaryRange${i}`);
+                const rangeValue = document.getElementById(`rangeValue${i}`);
+
+                rangeInput.addEventListener('input', function() {
+                rangeValue.textContent = this.value;
+                });
                 }
-                .question {
-                display: none;
-                margin-top: 10px;
+            </script>
+            <script>
+                const checkboxes = document.querySelectorAll('.form-check-input');
+                const errorMessage = document.getElementById('error-message');
+
+                checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                let checkedCount = document.querySelectorAll('.form-check-input:checked').length;
+
+                if (checkedCount > 2) {
+                this.checked = false; // Uncheck the checkbox if more than 2 are already checked
+                errorMessage.style.display = 'block'; // Show the error message
+                } else {
+                errorMessage.style.display = 'none'; // Hide the error message if within limit
                 }
-                input[type="radio"]:checked + label + .question {
-                display: block;
-                }
-            </style>
+                });
+                });
+            </script>
+
         </t>
     </template>
+
     <template id="thank_you" name="Thanks Message">
         <span style="font-size:30px; color: Brown;">
             <center>

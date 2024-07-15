@@ -14,17 +14,3 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="invoice_configuration.invoice_creation_option",
     )
 
-    # def set_values(self):
-    #     super(ResConfigSettings, self).set_values()
-    #     param = self.env['ir.config_parameter'].sudo().set_param(
-    #         'invoice_configuration.invoice_creation_option',
-    #          self.invoice_creation_option)
-
-    # @api.model
-    # def get_values(self):
-    #     res = super(ResConfigSettings, self).get_values()
-    #     res.update(
-    #         invoice_creation_option=self.env['ir.config_parameter']
-    #         .sudo().get_param('invoice_configuration.invoice_creation_option')
-    #     )
-    #     return res

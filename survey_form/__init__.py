@@ -1,3 +1,3 @@
-
+from . import models
 from . import controllers
 # Part of Odoo. See LICENSE file for full copyright and licensing details.

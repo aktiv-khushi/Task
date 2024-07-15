@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Extends the ProductCard component in the POS module to display a multi-image icon
+    if enabled in the POS configuration.
+
+    Attributes:
+        t-inherit="point_of_sale.ProductCard" - Inherits from the ProductCard component.
+        t-inherit-mode="extension" - Extends the existing component.
+        owl="1" - Enables Owl Carousel for image sliding.
+
+    Methods:
+        onClickImageIcon - Triggered when the multi-image icon is clicked.
+
+    Conditions:
+        env.services.pos.config.multi_image - Checks if multi-image feature is enabled.
+-->
+
+<t t-name="ShowProductImages" t-inherit="point_of_sale.ProductCard"
+   t-inherit-mode="extension" owl="1">
+    <xpath expr="//div[hasclass('product-information-tag')]" position="after">
+        <t t-if="env.services.pos.config.multi_image">
+            <div t-on-click.prevent.stop="onClickImageIcon">
+                <i class="product-info-button fa fa-image" role="img"
+                   aria-label="Multi image" title="Multi image"/>
+            </div>
+        </t>
+    </xpath>
+</t>

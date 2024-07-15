@@ -30,7 +30,6 @@ class StockPicking(models.Model):
                 "account.action_move_out_invoice_type"
             ).read()[0]
             if len(invoices) > 1:
-                print("\n\nif---")
                 action["domain"] = [("id", "in", invoices.ids)]
             else:
                 action.update(
@@ -44,8 +43,24 @@ class StockPicking(models.Model):
             return action
 
         return False
-
-    """click on create bill button show on bill."""
+    # optimize
+    # def action_create_bill(self):
+    #     """click on create bill button show on bill."""
+    #     purchase_orders = self.mapped("purchase_id")
+    #     invoices = purchase_orders.action_create_invoice() if purchase_orders else []
+    #
+    #     if invoices:
+    #         action = self.env.ref("account.action_move_in_invoice_type").read()[0]
+    #         if len(invoices) > 1:
+    #             action["domain"] = [("id", "in", [inv.id for inv in invoices])]
+    #         else:
+    #             action.update(
+    #                 {
+    #                     "views": [(self.env.ref("account.view_move_form").id, "form")],
+    #                     "res_id": invoices[0].id,
+    #                 }
+    #             )
+    #         return action
 
     def action_create_bill(self):
         invoices = []
@@ -96,8 +111,8 @@ class StockPicking(models.Model):
                 )
 
             elif (
-                option == "purchase"
-                and picking.picking_type_id.code == "incoming"
+                    option == "purchase"
+                    and picking.picking_type_id.code == "incoming"
             ):
                 picking.update(
                     {

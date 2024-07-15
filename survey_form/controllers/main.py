@@ -11,5 +11,5 @@ class SurveyForm(http.Controller):
 
     @http.route('/success', type='http', auth='public', website=True)
     def success(self, **kw):
-        print('survey form----------->')
+        print('survey form-------tur---->')
         return request.render('survey_form.thank_you')

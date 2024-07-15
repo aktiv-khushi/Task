@@ -14,5 +14,5 @@ class SaleOrderLine(models.Model):
 
     def _prepare_procurement_values(self, group_id=False):
         res = super()._prepare_procurement_values(group_id)
-        update = res.update({'supplierinfo_name': self.vendor_id.partner_id})
+        update = res.update({'supplierinfo_id': self.vendor_id.partner_id})
         return res

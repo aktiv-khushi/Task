@@ -20,8 +20,7 @@ class ResPartner(models.Model):
 
     @api.model
     def _name_search(
-        self, name, domain=None, operator="ilike", limit=None, order=None
-    ):
+        self, name, domain=None, operator="ilike", limit=None, order=None):
         domain = domain or []
         if operator != "ilike" or (name or "").strip():
             name_domain = [

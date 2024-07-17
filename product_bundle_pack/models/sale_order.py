@@ -10,12 +10,10 @@ class SaleOrder(models.Model):
                                         domain=[('is_product_pack', '=', True)])
 
     def action_confirm(self):
-        """Override the action_confirm method to create stock moves
-        for pack products."""
         super().action_confirm()
         for line in self.order_line:
             if line.product_id.is_product_pack:
-                for record in line.product_id.pack_products_ids:
+                for record in line.product_template_id.pack_products_ids:
                     for rec in self.picking_ids:
                         move = rec.move_ids.create({
                             'name': record.product_id.name,
@@ -28,22 +26,22 @@ class SaleOrder(models.Model):
                         })
                         move._action_confirm()
 
-    @api.onchange('product_pack_ids')
-    def onchange_product_pack_ids(self):
-        if self.product_pack_ids:
-            new_order_lines = []
-            for rec in self.product_pack_ids:
-                product_already_added = any(
-                    line.product_id.id == rec._origin.id for line in
-                    self.order_line)
-                if not product_already_added:
-                    new_order_lines.append((0, 0, {
-                        'product_id': rec.id,
-                        'name': rec.name,
-                        'product_uom_qty': 1,
-                        'price_unit': rec.pack_price,
-                    }))
-                    self.order_line = new_order_lines
-        elif not self.product_pack_ids:
-            self.order_line = [(5, 0, 0)]
+    # @api.onchange('product_pack_ids')
+    # def onchange_product_pack_ids(self):
+    #     if self.product_pack_ids:
+    #         new_order_lines = []
+    #         for rec in self.product_pack_ids:
+    #             product_already_added = any(
+    #                 line.product_id.id == rec._origin.id for line in
+    #                 self.order_line)
+    #             if not product_already_added:
+    #                 new_order_lines.append((0, 0, {
+    #                     'product_id': rec.id,
+    #                     'name': rec.name,
+    #                     'product_uom_qty': 1,
+    #                     'price_unit': rec.pack_price,
+    #                 }))
+    #                 self.order_line = new_order_lines
+    #     elif not self.product_pack_ids:
+    #         self.order_line = [(5, 0, 0)]
 

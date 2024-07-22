@@ -16,9 +16,11 @@ class SaleOrderWizad(models.TransientModel):
 
     # @api.model
     # def default_get(self, fields_list):
+    #     print("\n\n\nfield list::::",fields_list,self)
     #     sale_order_line_id = self.env.context.get("active_id")
     #     record = self.env["sale.order.line"].browse(sale_order_line_id)
     #     res = super().default_get(fields_list)
+    #     print("\n\n\n\n\nressss",res)
     #     res["name"] = record.order_id.partner_id
     #     res["product"] = record.product_template_id
     #     show_history = self.env["ir.config_parameter"].get_param(
@@ -44,17 +46,47 @@ class SaleOrderWizad(models.TransientModel):
     #     )
     #     return res
 
+    # @api.model
+    # def default_get(self, fields_list):
+        # print("\n\n\nfields::::",fields_list)
+        # res = super().default_get(fields_list)
+        # print("res",res)
+        # sale_order_line_id = self.env.context.get("active_id")
+        # print("\n\n\n11111111111111111111111",sale_order_line_id)
+        # if sale_order_line_id:
+        #     print("\n\n\n\niffffffffffffffffffff")
+        #     record = self.env["sale.order.line"].browse(sale_order_line_id)
+        #     print("\n\n\nrecordd::::",record)
+            # record_set = res.update({'name': record.order_id.partner_id, 'product': record.product_template_id,
+            #     'order_line_ids':[(6, 0, self.env["sale.order.line"].search([
+            #     ("order_id.partner_id", "=", record.order_id.partner_id.id),
+            #     ("product_template_id", "=", record.product_template_id.id),
+            #     ("order_id.state", "=", self.env["ir.config_parameter"].get_param(
+            #         "show_history_so.show_history_for_order"))]))]})
+            # print("record_set",record_set)
+        # return res
+
+
+
+# res["order_line_ids"] = [(6, 0, self.env["sale.order.line"].search([
+            #     ("order_id.partner_id", "=", res["name"]),
+            #     ("product_template_id", "=", res["product"]),
+            #     ("order_id.state", "=", self.env["ir.config_parameter"].get_param(
+            #         "show_history_so.show_history_for_order"))]))]
+
+
+
+
     @api.model
     def default_get(self, fields_list):
-        res = super().default_get(fields_list)
         sale_order_line_id = self.env.context.get("active_id")
-        if sale_order_line_id:
-            record = self.env["sale.order.line"].browse(sale_order_line_id)
-            res.update({'name': record.order_id.partner_id, 'product': record.product_template_id})
-            res["order_line_ids"] = [(6, 0, self.env["sale.order.line"].search([
-                ("order_id.partner_id", "=", res["name"]),
-                ("product_template_id", "=", res["product"]),
-                ("order_id.state", "=", self.env["ir.config_parameter"].get_param(
-                    "show_history_so.show_history_for_order"))]))]
+        record = self.env["sale.order.line"].browse(sale_order_line_id)
+        res = super().default_get(fields_list)
+        res.update({'name': record.order_id.partner_id, 'product': record.product_template_id,
+                    'order_line_ids': self.env["sale.order.line"].search(
+                        [('order_id.partner_id.name', '=', record.order_id.partner_id.name),
+                         ('product_template_id.name', '=', record.product_template_id.name),
+                         ('order_id.state', '=',
+                          self.env['ir.config_parameter'].get_param(
+                              'show_history_so.show_history_for_order'))])})
         return res
-

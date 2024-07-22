@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="components.MyComponent">
+        <div class="counter">
+            <h4>Counter: <span t-esc="state.value"/>
+            </h4>
+            <button t-on-click="increment">Increment</button>
+        </div>
+    </t>
+</templates>

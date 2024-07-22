@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="components.NewComponent">
+         <div class="test">
+            <div class="test_class">
+                <h1>Counter:
+                    <span t-esc="state.value"/>
+                </h1>
+                <button t-on-click="increment">Increment</button>
+                <button t-on-click="decrement">Decrement</button>
+                <button t-on-click="reset">Reset</button>
+            </div>
+             <div id="error" class="error_msg d-none">You cannot decrease the value below 0</div>
+         </div>
+
+        <!--         <div class="full-page-div">-->
+        <!--        <div class="centered-div">-->
+        <!--            &lt;!&ndash; Your centered content here &ndash;&gt;-->
+        <!--            <p>Centered Content</p>-->
+        <!--        </div>-->
+        <!--    </div>-->
+
+        <!--        <div>-->
+        <!--            testtttttttttttttttttttttttt-->
+        <!--        </div>-->
+
+    </t>
+</templates>
+

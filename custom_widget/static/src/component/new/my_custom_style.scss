@@ -1,0 +1,44 @@
+// .counter {
+//     display: flex;
+//     align-items: center;
+//     background-image: url("/custom_widget/static/src/description/image.png"); /* Ensure the URL is correct */
+// //     background-color: grey;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     height: 100%;
+//     margin: 30px 50px;
+// }
+//
+// .counter h4 {
+//     margin: 0; /* Remove margin for better alignment */
+//     margin-right: 10px; /* Space between counter value and button */
+// }
+//
+// .counter button {
+//     margin-left: 20px; /* Align button to the right */
+// }
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/custom_widget/static/src/component/icon/image.png"); /* Ensure the URL is correct */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 50%;
+    height: 100%;
+}
+
+.counter h4 {
+    margin: 0;
+    margin-right: 10px; /* Space between counter value and button */
+}
+
+.counter button {
+    margin-left: 20px; /* Adjust space as needed */
+}

@@ -8,7 +8,7 @@
     "sequence": 15,
     "summary": "Show where the product is used.",
     "website": "https://www.odoo.com/app/crm",
-    "depends": ["sale_management"],
+    "depends": ["sale_management",'base','sale'],
     "data": [
         "security/ir.model.access.csv",
         "views/res_config_setting_views.xml",

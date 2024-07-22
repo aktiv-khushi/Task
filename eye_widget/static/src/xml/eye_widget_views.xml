@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="eye_widget.EyeWidget" t-inherit="web.CharField" t-inherit-mode="primary">
+        <xpath expr="//input" position="after">
+            <!-- <span>abc</span> -->
+            <div class="password-toggle-widget">
+                <input t-att-value="props.value" t-on-input="props.update" class="o_input"/>
+                <span class="eye-icon" t-on-click="togglePasswordVisibility">
+                <i t-attf-class="fa {{ state.showPassword ? 'fa-eye-slash' : 'fa-eye' }}"></i>
+            </span>
+        </div>
+            <!-- <div class="input-group-append o_password_toggle_button">
+                <button type="button" class="btn btn-default show_hide_pass" t-on-click="togglePasswordVisibility">
+                    <i class="fa fa-eye"></i>
+                </button>
+            </div> -->
+        </xpath>
+    </t>
+</templates>

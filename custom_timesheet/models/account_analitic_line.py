@@ -27,20 +27,26 @@ class AnalyticLine(models.Model):
             self._check_date(vals['date'])
         return super(AnalyticLine, self).write(vals)
 
+    # def _check_date(self, date_str):
+    #     # Convert string to date
+    #     date_entry = fields.Date.from_string(date_str)
+    #     current_datetime = datetime.now()
+    #     seven_days_ago = current_datetime - timedelta(days=7)
+    #     # Check if the date is more than 7 days in the past
+    #     if date_entry < seven_days_ago.date():
+    #         last_monday = current_datetime - timedelta(days=current_datetime.weekday())
+    #         last_monday_4pm = last_monday.replace(hour=16, minute=0, second=0, microsecond=0)
+    #         if current_datetime > seven_days_ago:
+    #             raise ValidationError("Timesheet Entry is locked for this Date.")
+    #     # Check if the date is a Saturday or Sunday
+    #     if date_entry.weekday() in (5, 6):  # 5 is Saturday, 6 is Sunday
+    #         raise ValidationError("Cannot fill Saturday and Sunday timesheets.")
+
     def _check_date(self, date_str):
-        date_entry = fields.Date.from_string(date_str)
-        current_datetime = datetime.now()
-        seven_days_ago = current_datetime - timedelta(days=7)
-
-        # Check if the date is more than 7 days in the past
-        if date_entry < seven_days_ago.date():
-            # Get the last Monday at 4 PM from the current date
-            last_monday = current_datetime - timedelta(days=current_datetime.weekday())
-            last_monday_4pm = last_monday.replace(hour=16, minute=0, second=0)
-
-            if current_datetime > last_monday_4pm:
+        if fields.Date.from_string(date_str) < (datetime.now() - timedelta(days=7)).date():
+            if datetime.now() > datetime.now() - timedelta(days=7):
                 raise ValidationError("Timesheet Entry is locked for this Date.")
-
-        # Check if the date is a Saturday or Sunday
-        if date_entry.weekday() in (5, 6):
+        if fields.Date.from_string(date_str).weekday() in (5, 6):
             raise ValidationError("Cannot fill Saturday and Sunday timesheets.")
+
+

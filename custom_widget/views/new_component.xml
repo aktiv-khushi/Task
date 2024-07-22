@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="my_component_action" model="ir.actions.client">
+        <field name="name">New</field>
+        <field name="tag">new_component</field>
+    </record>
+    <menuitem id="new_component_menu"
+              name="Component"
+              sequence="20"
+              web_icon="custom_widget,static/description/icon.png">
+        <menuitem id="component_menuitem"
+                  name="Counter" action="my_component_action"/>
+    </menuitem>
+</odoo>

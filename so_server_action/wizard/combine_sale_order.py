@@ -15,7 +15,7 @@ class CombineCustomer(models.TransientModel):
         active_ids = self.env.context.get("active_ids")
         sale_orders = sale_obj.browse(active_ids)
         combine_order = sale_obj.create(
-            {"partner_id": selected_orders[0].partner_id.id}
+            {"partner_id": self.selected_orders[0].partner_id.id}
         )
         for order in sale_orders:
             for line in order.order_line:
